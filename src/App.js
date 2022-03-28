@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import Login from "./login";
+import SignUp from "./Signup";
+import { Route, Routes } from "react-router-dom";
+import AppStoreProvider from "./store";
+import Profile from "./profile";
+import Todo from "./todo";
+import SearchHoc from "./searchHoc";
 
+const test = () => {
+  return <>Hello test hoc  component</>;
+};
+
+const Test1 =SearchHoc(test)
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppStoreProvider>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/todo" element={<Todo name={'Vishal'} />} />
+      </Routes>
+    </AppStoreProvider>
   );
 }
-
 export default App;
